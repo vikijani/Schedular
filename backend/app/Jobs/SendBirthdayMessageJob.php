@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Jobs;
 
+use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
@@ -12,9 +12,9 @@ class SendBirthdayMessageJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct()
+    public function __construct(public User $user)
     {
-        //
+
     }
 
     /**
@@ -22,6 +22,8 @@ class SendBirthdayMessageJob implements ShouldQueue
      */
     public function handle(): void
     {
-        logger("Happu Birthday {$this->user->name}");
+
+        logger("Happy Birthday {$this->user->name}");
+
     }
 }

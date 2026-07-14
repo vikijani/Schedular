@@ -5,7 +5,7 @@ use App\Models\User;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
-use App\Console\Jobs\SendBirthdayMessageJob;
+use App\Jobs\SendBirthdayMessageJob;
 
 #[Signature('app:check-birthdays')]
 #[Description('Command description')]
@@ -16,6 +16,7 @@ class CheckBirthdays extends Command
      */
     public function handle()
     {
+        $this->info('Command Started');
         $today = now();
 
         $users = User::whereMonth('birthday', $today->month)->whereDay('birthday', $today->day)->get();

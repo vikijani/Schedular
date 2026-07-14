@@ -54,9 +54,13 @@ async function handleSubmit() {
     informations.email = ''
     informations.phone = ''
 
-  } catch (error) {
-    alert(error.response.data.message);
-  }
+  } catch(error){
+    if(error.response){
+        console.log(error.response.data)
+    }else{
+        console.log(error.message)
+    }
+}
   finally {
     isLoading.value = false;
   }
